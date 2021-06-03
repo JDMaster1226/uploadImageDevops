@@ -1,0 +1,17 @@
+version: '3'
+
+services:
+
+  server:
+    container_name: server-devops
+    build:
+      context: server
+    ports:
+      - '5000:5000'
+
+  client:
+    container_name: client-devops
+    build:
+      context: client
+    ports:
+      - '3000:3000'
