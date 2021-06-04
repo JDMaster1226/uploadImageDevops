@@ -6,7 +6,6 @@ const fs = require("fs");
 const ms = require("mediaserver");
 const { yolo } = require('../functions/shell-yolo');
 const routers = express.Router();
-
 const rutaImages=path.join(__dirname, '../images');
 
 const optionStorage = multer.diskStorage({
@@ -34,13 +33,10 @@ const upload = multer({
     }
 }).single('image');
 
-
 routers.get('/:nombre', async (req, res) => {
-    const image = await yolo('ruta', 'nombre');
     const {nombre} =  req.params;
     const rutaArchivo = rutaImages+'/upload/'+nombre;
-    console.log(`${rutaArchivo} ruta audio`);
-      // Verficar existencia del audio
+
       if (fs.existsSync(rutaArchivo)) {
         try {
           ms.pipe(req, res, rutaArchivo);
@@ -49,18 +45,13 @@ routers.get('/:nombre', async (req, res) => {
           console.log(mensajeError);
         }
       } else {
-        const mensajeError = "No existe el audio en el sistema de archivos";
+        const mensajeError = "No existe el archivo en el sistema de archivos";
         console.log(mensajeError);
       }
-
-    //console.log(image);
-
 });
 
 routers.post('/', upload, (req, res) => {
-    console.log("router image post");
     const { path,filename } = req.file;
-    console.log(req.file);
     res.send({
         status: 0,
         message: 'post imge',
@@ -69,12 +60,15 @@ routers.post('/', upload, (req, res) => {
     });
 });
 
-
-
-
-
-
-
+routers.post('/yolo',async(req,res)=>{
+  const { rutaImagen,nombre } = req.body;
+  const image = await yolo(rutaImagen, nombre);
+  res.send({
+    status: 0,
+    message: 'get yolo imge',
+    image
+});
+});
 
 
 module.exports = routers;
