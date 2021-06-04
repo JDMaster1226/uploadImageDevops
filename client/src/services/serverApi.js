@@ -16,4 +16,8 @@ export class ServerAPI {
     return INSTANCE.post('/images', data).then( (response) =>  response );
   }
 
+  static async processImg(data) {
+    return INSTANCE.post('/images/yolo', data).then( (response) =>  response );
+  }
+
 }
