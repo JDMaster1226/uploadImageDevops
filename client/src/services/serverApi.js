@@ -12,6 +12,10 @@ const INSTANCE = axios.create({
 
 export class ServerAPI {
 
+  static async getServer() {
+    return serverURL;
+  }
+
   static async uploadImage(data) {
     return INSTANCE.post('/images', data).then( (response) =>  response );
   }

@@ -24,6 +24,8 @@ jobs:
         context: server
         repository: ${{ github.repository }}
         push: true
+        tag_with_ref: true
+        tag_with_sha: true
         tags: ${{ secrets.DOCKER_USERNAME }}/server-upload-images:${{ github.sha }}
     -
       name: build and push CLIENT
@@ -32,4 +34,6 @@ jobs:
         context: client
         repository: ${{ github.repository }}
         push: true
+        tag_with_ref: true
+        tag_with_sha: true
         tags: ${{ secrets.DOCKER_USERNAME }}/client-upload-images:${{ github.sha }}
