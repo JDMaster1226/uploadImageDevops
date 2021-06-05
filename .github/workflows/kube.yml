@@ -2,9 +2,12 @@ name: all-push
 on: push
 jobs:
   kube:
-    name: config kubectl
+    name: build and push SERVER in docker
     runs-on: ubuntu-latest
     steps:
+    -
+      name: Checkout
+      uses: actions/checkout@v2
     - 
       name: get-credentials
       uses: google-github-actions/get-gke-credentials@main
