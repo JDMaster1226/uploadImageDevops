@@ -22,9 +22,9 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: server
-        repository: docker.io
-        imageName: ${{ secrets.DOCKER_USERNAME }}/server-upload-images
-        tags: ${{ github.sha }}
+        repository: ${{ github.repository }}
+        #imageName: ${{ secrets.DOCKER_USERNAME }}/server-upload-images
+        tags: ${{ secrets.DOCKER_USERNAME }}/server-upload-images:${{ github.sha }}
         addLatest: true
         push: true
     -
@@ -32,8 +32,8 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: client
-        repository: docker.io
-        imageName: ${{ secrets.DOCKER_USERNAME }}/client-upload-images
-        tags: ${{ github.sha }}
+        repository: ${{ github.repository }}
+        #imageName: ${{ secrets.DOCKER_USERNAME }}/client-upload-images
+        tags: ${{ secrets.DOCKER_USERNAME }}/client-upload-images:${{ github.sha }}
         addLatest: true
         push: true
