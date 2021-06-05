@@ -57,5 +57,30 @@ jobs:
         credentials: ${{ secrets.gcp_credentials }}
     - 
       name: get-pods
-      run: kubectl get pods
-
+      run: kubectl get nodes
+      name: get-pods-ls
+      run: ls
+      name: get-pods-ls-cd
+      run: cd kubernetes && ls
+name: all-push
+on:
+  push:
+jobs:
+  kube:
+    name: config kubectl
+    runs-on: ubuntu-latest
+    steps:
+    - 
+      name: get-credentials
+      uses: google-github-actions/get-gke-credentials@main
+      with:
+        cluster_name: cluster-1
+        location: us-central1-c
+        credentials: ${{ secrets.gcp_credentials }}
+    - 
+      name: get-pods
+      run: kubectl get nodes
+      name: get-pods-ls
+      run: ls
+      name: get-pods-ls-cd
+      run: cd kubernetes && ls
