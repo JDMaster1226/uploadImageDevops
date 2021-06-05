@@ -1,6 +1,9 @@
 FROM node:16.2-alpine3.11
 
 ARG NAMESER
+ARG REACT_APP_HOST_PROTOCOL
+ARG name: REACT_APP_HOST_SERVER
+ARG REACT_APP_PORT_SERVER
 
 RUN apk add git
 
@@ -9,6 +12,4 @@ COPY package.json .
 RUN npm i
 COPY . .
 
-
-
-CMD NAMESER=$NAMESER npm start
+CMD ["npm", "start"]

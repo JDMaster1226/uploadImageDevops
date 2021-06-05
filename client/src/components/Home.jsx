@@ -45,7 +45,7 @@ export function Home() {
 
   return (
     <>
-      <h1>{server}</h1>
+      <h1>{probaenv}</h1>
       {boolErr && <h4>ERROR</h4>}
       <input ref={imageUpload} type="file" name="image" />
       <button onClick={handleUpload}>Cargar</button>
