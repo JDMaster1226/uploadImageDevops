@@ -58,5 +58,4 @@ jobs:
     - 
       name: get-pods
       run: kubectl get pods
-      run: ls
-      run: cd kubernetes && ls
+
