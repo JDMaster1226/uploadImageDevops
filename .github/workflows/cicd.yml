@@ -45,7 +45,8 @@ jobs:
         tags: ${{ secrets.DOCKER_USERNAME }}/client-upload-images:${{ github.sha }}, ${{ secrets.DOCKER_USERNAME }}/client-upload-images:latest
         push: true
   kube:
-    name: build and push SERVER in docker
+    needs: [push-server, push-cli]
+    name: actualizar pods kubernetes
     runs-on: ubuntu-latest
     steps:
     -
