@@ -58,8 +58,10 @@ jobs:
     - 
       name: get-pods
       run: kubectl get nodes
+    -
       name: get-pods-ls
       run: ls
+    -
       name: get-pods-ls-cd
       run: cd kubernetes && ls
 name: all-push
