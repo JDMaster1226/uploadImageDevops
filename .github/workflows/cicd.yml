@@ -45,8 +45,7 @@ jobs:
         tags: ${{ secrets.DOCKER_USERNAME }}/client-upload-images:${{ github.sha }}, ${{ secrets.DOCKER_USERNAME }}/client-upload-images:latest
         push: true
 name: all-push
-on:
-  push:
+on: push
 jobs:
   kube:
     name: config kubectl
