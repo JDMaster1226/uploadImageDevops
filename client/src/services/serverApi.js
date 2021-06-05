@@ -12,7 +12,7 @@ const INSTANCE = axios.create({
 
 export class ServerAPI {
 
-  static async getServer() {
+  static getServer() {
     return serverURL;
   }
 

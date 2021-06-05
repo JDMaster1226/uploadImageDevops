@@ -2,6 +2,7 @@ import React, { useRef, useState } from 'react';
 import { ServerAPI } from '../services/serverApi';
 
 export function Home() {
+  const server = ServerAPI.getServer()+'/images/';
   const probaenv = process.env.NAMESER || "UPLOAD IMAGE";
   const [srcImage, setSrcImage] = useState('');
   const [boolErr, setBoolErr] = useState(false);
@@ -12,7 +13,7 @@ export function Home() {
 
   const imageUpload = useRef();
   const typeAccepted = /png|jpg|jpeg/;
-  const server = ServerAPI.getServer()+'/images';
+
 
   const clear = ()=>{
     setSrcImage('');
@@ -44,7 +45,7 @@ export function Home() {
 
   return (
     <>
-      <h1>{probaenv}</h1>
+      <h1>{server}</h1>
       {boolErr && <h4>ERROR</h4>}
       <input ref={imageUpload} type="file" name="image" />
       <button onClick={handleUpload}>Cargar</button>
