@@ -1,0 +1,20 @@
+name: all-push
+on: push
+jobs:
+  kube:
+    name: build and push SERVER in docker
+    runs-on: ubuntu-latest
+    steps:
+    -
+      name: Checkout
+      uses: actions/checkout@v2
+    - 
+      name: get-credentials
+      uses: google-github-actions/get-gke-credentials@main
+      with:
+        cluster_name: cluster-1
+        location: us-central1-c
+        credentials: ${{ secrets.gcp_credentials }}
+    - 
+      name: get-pods
+      run: kubectl get nodes && ls && cd kubernetes && ls

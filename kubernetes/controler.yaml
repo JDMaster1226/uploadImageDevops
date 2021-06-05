@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: uploadimages  
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        role: uploadimages
+    spec:
+      containers:
+      - name: upload-images-client
+        image: jdmaster/client-upload-images:ed8cbff1b18aea2154e85b766c49d4a9f8840404
+        env:
+        - name: NAMESER
+          value: "Kubernetes"
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+      - name: upload-images-server
+        image: jdmaster/server-upload-images:ed8cbff1b18aea2154e85b766c49d4a9f8840404
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000

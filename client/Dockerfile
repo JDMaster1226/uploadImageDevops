@@ -1,13 +1,15 @@
 FROM node:16.2-alpine3.11
 
-RUN apk add git
+ARG NAMESER
+ARG REACT_APP_HOST_PROTOCOL
+ARG name: REACT_APP_HOST_SERVER
+ARG REACT_APP_PORT_SERVER
 
+RUN apk add git
 
 WORKDIR /app
 COPY package.json .
 RUN npm i
 COPY . .
 
-RUN ls -la
-
-CMD ["node", "index"]
+CMD ["npm", "start"]
