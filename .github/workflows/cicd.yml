@@ -22,7 +22,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: server
-        repository: ${{ secrets.DOCKER_USERNAME }}/server-upload-images
+        repository: ${{ github.repository }}
         #push: true
         tag_with_ref: true
         tag_with_sha: true
@@ -32,7 +32,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: client
-        repository: ${{ secrets.DOCKER_USERNAME }}/client-upload-images
+        repository: ${{ github.repository }}
         #push: true
         tag_with_ref: true
         tag_with_sha: true
