@@ -19,21 +19,19 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
     -
       name: build and push SERVER
-      uses: docker/build-push-action@v2
+      uses: mr-smithers-excellent/docker-build-push@v5
       with:
-        context: server
-        repository: ${{ github.repository }}
-        #imageName: ${{ secrets.DOCKER_USERNAME }}/server-upload-images
-        tags: ${{ secrets.DOCKER_USERNAME }}/server-upload-images:${{ github.sha }}
+        image: ${{ secrets.DOCKER_USERNAME }}/server-upload-images
+        tags: ${{ github.sha }}
+        registry: docker.io
+        directory: server
         addLatest: true
-        push: true
     -
       name: build and push CLIENT
-      uses: docker/build-push-action@v2
+      uses: mr-smithers-excellent/docker-build-push@v5
       with:
-        context: client
-        repository: ${{ github.repository }}
-        #imageName: ${{ secrets.DOCKER_USERNAME }}/client-upload-images
-        tags: ${{ secrets.DOCKER_USERNAME }}/client-upload-images:${{ github.sha }}
+        image: ${{ secrets.DOCKER_USERNAME }}/client-upload-images
+        tags: ${{ github.sha }}
+        registry: docker.io
+        directory: client
         addLatest: true
-        push: true
