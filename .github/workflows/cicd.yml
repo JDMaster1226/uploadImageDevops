@@ -24,7 +24,7 @@ jobs:
         image: ${{ secrets.DOCKER_USERNAME }}/server-upload-images
         tags: ${{ github.sha }}
         registry: docker.io
-        dockerfile: server
+        directory: /server/
         addLatest: true
     -
       name: build and push CLIENT
@@ -33,5 +33,5 @@ jobs:
         image: ${{ secrets.DOCKER_USERNAME }}/client-upload-images
         tags: ${{ github.sha }}
         registry: docker.io
-        dockerfile: client
+        directory: /client/
         addLatest: true
