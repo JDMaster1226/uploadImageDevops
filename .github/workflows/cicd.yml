@@ -25,6 +25,7 @@ jobs:
         imageName: ${{ secrets.DOCKER_USERNAME }}/server-upload-images
         tags: ${{ github.sha }}
         addLatest: true
+        push: true
     -
       name: build and push CLIENT
       uses: docker/build-push-action@v2
@@ -33,3 +34,4 @@ jobs:
         imageName: ${{ secrets.DOCKER_USERNAME }}/client-upload-images
         tags: ${{ github.sha }}
         addLatest: true
+        push: true
