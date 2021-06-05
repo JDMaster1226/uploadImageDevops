@@ -2,7 +2,7 @@ import React, { useRef, useState } from 'react';
 import { ServerAPI } from '../services/serverApi';
 
 export function Home() {
-  const probaenv = process.env.NAMESER || "Local";
+  const probaenv = process.env.NAMESER || "UPLOAD IMAGE";
   const [srcImage, setSrcImage] = useState('');
   const [boolErr, setBoolErr] = useState(false);
 

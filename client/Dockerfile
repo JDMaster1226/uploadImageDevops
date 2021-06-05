@@ -11,4 +11,4 @@ COPY . .
 
 
 
-CMD npm start
+CMD NAMESER=$NAMESER npm start
