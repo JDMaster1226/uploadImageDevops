@@ -22,18 +22,14 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: server
-        repository: ${{ github.repository }}
-        #push: true
-        tag_with_ref: true
-        tag_with_sha: true
+        imageName: ${{ secrets.DOCKER_USERNAME }}/server-upload-images
         tags: ${{ github.sha }}
+        addLatest: true
     -
       name: build and push CLIENT
       uses: docker/build-push-action@v2
       with:
         context: client
-        repository: ${{ github.repository }}
-        #push: true
-        tag_with_ref: true
-        tag_with_sha: true
+        imageName: ${{ secrets.DOCKER_USERNAME }}/client-upload-images
         tags: ${{ github.sha }}
+        addLatest: true
