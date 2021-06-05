@@ -11,7 +11,7 @@ spec:
     spec:
       containers:
       - name: upload-images-client
-        image: jdmaster/client-upload-images:5f368f0b360c0e53369690421f4310c12bc9f46a
+        image: jdmaster/client-upload-images
         env:
         - name: REACT_APP_HOST_PROTOCOL
           value: "http"
