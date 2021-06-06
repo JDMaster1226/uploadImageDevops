@@ -4,6 +4,7 @@ const routers = express.Router();
 const images = require('./images-router');
 
 routers.get('/',(req,res)=>{
+    console.log("peticion de vida");
     res.send({
         status:0,
         message:'router index'
