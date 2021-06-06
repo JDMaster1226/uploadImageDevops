@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: uploadimages-server-deploy
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      role: uploadimages
+  template:
+    metadata:
+      labels:
+        role: uploadimages
+    spec:
+      containers:
+      - name: upload-images-server
+        image: jdmaster/server-upload-images
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 5000
+      #   volumeMounts:
+      #   - mountPath: /app/images
+      #     name: upimage
+      # volumes:
+      # - name: upimage
+      #   hostPath:
+      #     path: /mnt
+      #     #type: Directory
