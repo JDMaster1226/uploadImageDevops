@@ -53,13 +53,13 @@ jobs:
       name: Checkout
       uses: actions/checkout@v2
     - 
-      name: get-credentials
+      name: login en kube
       uses: google-github-actions/get-gke-credentials@main
       with:
         cluster_name: cluster-1
         location: us-central1-c
         credentials: ${{ secrets.gcp_credentials }}
     - 
-      name: get-pods
+      name: Actualizar imagen en kube
       #run: cd kubernetes && kubectl -n devops apply -f controler-server.yaml && kubectl -n devops apply -f controler-client.yaml
-      run : kubectl -n devops set image --record deployment.apps/uploadimages-server-deploy upload-images-server=jdmaster/server-upload-images:${{ github.sha }}
+      run : kubectl -n devops set image --record deployment.apps/uploadimages-server-deploy upload-images-server=jdmaster/server-upload-images:${{ github.sha }} && kubectl -n devops set image --record replicationcontroller/uploadimages-cli upload-images-client=jdmaster/client-upload-images:${{ github.sha }}
