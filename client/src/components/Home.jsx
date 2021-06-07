@@ -3,7 +3,7 @@ import { ServerAPI } from '../services/serverApi';
 
 export function Home() {
   const server = ServerAPI.getServer()+'/images/';
-  const probaenv = process.env.NAMESER || "UPLOAD IMAGE";
+  const probaenv = process.env.NAMESER || "UPLOAD IMAGE - JD";
   const [srcImage, setSrcImage] = useState('');
   const [boolErr, setBoolErr] = useState(false);
 
